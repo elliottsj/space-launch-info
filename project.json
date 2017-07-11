@@ -1,0 +1,9 @@
+{
+  "name": "space-launch-info",
+  "description": "",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::312936528470:role/space-launch-info_lambda_function",
+  "runtime": "nodejs6.10",
+  "environment": {}
+}

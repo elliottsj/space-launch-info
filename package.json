@@ -1,0 +1,14 @@
+{
+  "name": "space-launch-info",
+  "version": "1.0.0",
+  "main": "project.json",
+  "repository": "git@github.com:elliottsj/space-launch-info.git",
+  "author": "Spencer Elliott <me@elliottsj.com>",
+  "license": "MIT",
+  "dependencies": {
+    "alexa-sdk": "^1.0.11",
+    "eslint": "^4.2.0",
+    "eslint-plugin-prettier": "^2.1.2",
+    "prettier": "^1.5.2"
+  }
+}
