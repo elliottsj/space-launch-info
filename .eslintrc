@@ -1,0 +1,17 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error", {
+        "trailingComma": "all",
+        "singleQuote": true
+      }
+    ]
+  }
+}
