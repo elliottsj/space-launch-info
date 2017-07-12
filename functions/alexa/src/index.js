@@ -70,7 +70,7 @@ const handlers = {
     },
 };
 
-exports.handler = function (event, context, callback) {
+export default function (event, context, callback) {
     const alexa = Alexa.handler(event, context, callback);
     alexa.APP_ID = APP_ID;
     alexa.resources = languageStrings;

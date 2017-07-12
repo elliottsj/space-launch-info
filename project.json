@@ -4,6 +4,11 @@
   "memory": 128,
   "timeout": 5,
   "role": "arn:aws:iam::312936528470:role/space-launch-info_lambda_function",
+  "environment": {},
   "runtime": "nodejs6.10",
-  "environment": {}
+  "handler": "lib.default",
+  "hooks": {
+    "build": "../../node_modules/.bin/webpack --config ../../webpack.config.js --bail",
+    "clean": "rm -rf lib"
+  }
 }
