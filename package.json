@@ -5,6 +5,9 @@
   "repository": "git@github.com:elliottsj/space-launch-info.git",
   "author": "Spencer Elliott <me@elliottsj.com>",
   "license": "MIT",
+  "scripts": {
+    "test": "eslint functions webpack.config.js"
+  },
   "dependencies": {
     "alexa-sdk": "^1.0.11",
     "node-fetch": "^1.7.1"
