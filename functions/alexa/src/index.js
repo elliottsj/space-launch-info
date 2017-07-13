@@ -34,11 +34,13 @@ const handlers = {
   },
   LaunchDateTimeIntent() {
     console.log('Received LaunchDateTimeIntent');
+    // Use launchlibrary.net to find the next SpaceX launch
     fetch(
       'https://launchlibrary.net/1.2/launch?' +
         'mode=verbose&' +
         'limit=1&' +
         'agency=spx&' +
+        // Find launches today or later
         `startdate=${new Date().toISOString().slice(0, 10)}`,
     )
       .then(response => response.json())
@@ -48,7 +50,11 @@ const handlers = {
           this.emit(':tell', this.t('ERROR_MESSAGE'));
         } else {
           const launch = json.launches[0];
+
+          // Use NET (no-earlier-than) date
+          // Format provided is "YYYYmmddTHHMMSSZ"; use only the YYYYmmdd part
           const date = launch.isonet.slice(0, 8);
+
           console.error('Found next SpaceX launch:', date);
           if (launch.missions.length > 0) {
             const mission = launch.missions[0];
