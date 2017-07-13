@@ -1,0 +1,19 @@
+# Use Trusty beta environment: https://docs.travis-ci.com/user/trusty-ci-environment/
+dist: trusty
+sudo: false
+
+language: node_js
+node_js:
+  - '6'
+  - 'stable'
+cache: yarn
+
+# Make Greenkeeper work with lockfiles:
+# https://github.com/greenkeeperio/greenkeeper-lockfile/tree/f62f2f3e33cd1dd349c2898e0129c693cbc5804d#yarn
+env:
+  global:
+    secure: ILLW4Fw40OaEQ+wbAdq6jfcnGg1MRpSS3qjHame8jEhb9mKSEFGekGBdrJ57GT9ppIcykVcqthu7qFT5mjHK18n3CkNUNK/fLvEUL+dJpAJNMvldr1Jyb+LKPCsI8mUToK0alIkMF3PFc+EZuRQ/rDx6C/SodEwj6bVBuDWZ07IaZ1nZ6JNQlXB9gh1SX9ol6abwXqIQ4d7fK8Q82u5MXSxHuR2XZ5UMLYCnM7hSDAUzbzxSs/ivLM+0fepDmek5CVWX1qk1sbftgYntoLwM8Dz4tCPfUoOCFAu7s4j3we2/9paeAdgxl2/USafpjvTWDH+zsxXxj4/K1B5E4FAyzc642nPtqS5Daz4ieVbMXbvb8NFBMaA9t1a2cLNt472XmVPwUEKypZTFchprYOGbGwDgQEMGUhhVBiDRobVOcCkOUNcaFfvF0gBW+PM3luEwpItVP7dQPa2kpAcWGdLe/2uEjFVefm+6yknWZ4xuatCY5g4pVtPxOP0Vghs217xzZGL43BP5JRJKXsVZd06TFUhNzFSfURHt8zFQHvb1DDkWSm2MV4bDScv9of2fsbKPap8VgceFhEJwU5evOH0YJpXcTiOglrQJ/ulRZFyXAFMyZ4HaV+uMNKClWVPSnrrlZVwwsuK2YWuqyU6wBFjxjFjGr7a+WVTMSVYIB0ngWNU=
+
+before_install: yarn global add greenkeeper-lockfile@1
+before_script: greenkeeper-lockfile-update
+after_script: greenkeeper-lockfile-upload

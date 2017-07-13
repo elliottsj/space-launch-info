@@ -1,4 +1,7 @@
 # space-launch-info
+
+[![Travis CI Build Status](https://travis-ci.org/elliottsj/space-launch-info.svg?branch=master)](https://travis-ci.org/elliottsj/space-launch-info)
+
 Alexa skill providing space launch info.
 
 ### Usage
