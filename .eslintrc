@@ -1,4 +1,8 @@
 {
+  "extends": "eslint:recommended",
+  "env": {
+    "node": true
+  },
   "parserOptions": {
     "ecmaVersion": 2017,
     "sourceType": "module"
@@ -7,6 +11,7 @@
     "prettier"
   ],
   "rules": {
+    "no-console": "off",
     "prettier/prettier": [
       "error", {
         "trailingComma": "all",
