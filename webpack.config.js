@@ -34,6 +34,7 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
+        ALEXA_APP_ID: JSON.stringify(process.env.ALEXA_APP_ID),
         NODE_ENV: JSON.stringify('production'),
       },
     }),
