@@ -8,17 +8,25 @@ const languageStrings = {
     translation: {
       NEXT_MESSAGE: 'The next SpaceX launch will be on %s',
       NEXT_MISSION_MESSAGE: 'The next SpaceX launch will be %s on %s',
-      ERROR_MESSAGE: 'Sorry, I could not find the next SpaceX launch',
+      NO_LAUNCH_MESSAGE: 'Sorry, I could not find the next SpaceX launch',
       HELP_MESSAGE:
         'You can ask me when is the next launch, or you can say exit... What can I help you with?',
       HELP_REPROMPT: 'What can I help you with?',
       STOP_MESSAGE: 'Goodbye!',
+      UNHANDLED_MESSAGE: "Sorry, I didn't get that",
     },
   },
 };
 
 const handlers = {
-  LaunchRequest: function() {
+  LaunchRequest() {
+    this.emit('AMAZON.HelpIntent');
+  },
+  SessionEndedRequest() {
+    console.log('Session ended');
+  },
+  Unhandled() {
+    this.emit(':tell', this.t('UNHANDLED_MESSAGE'));
     this.emit('AMAZON.HelpIntent');
   },
   'AMAZON.HelpIntent'() {
@@ -47,7 +55,7 @@ const handlers = {
       .then(json => {
         if (json.launches.length == 0) {
           console.error('No launches found in response');
-          this.emit(':tell', this.t('ERROR_MESSAGE'));
+          this.emit(':tell', this.t('NO_LAUNCH_MESSAGE'));
         } else {
           const launch = json.launches[0];
 
@@ -79,7 +87,7 @@ const handlers = {
       })
       .catch(error => {
         console.error('Failed to fetch next launch', error.message);
-        this.emit(':tell', this.t('ERROR_MESSAGE'));
+        this.emit(':tell', this.t('NO_LAUNCH_MESSAGE'));
       });
   },
 };
